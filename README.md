@@ -21,7 +21,7 @@ the links below:
 	$ git clone https://github.com/ncastello/dockerfiles-root.git
 	$ cd dockerfiles-root
 	```
-#### 2. Change ID number and name user into the Dockerfile
+#### 2. Change user name and ID number
 
 	* search for FIXME in the Docker file and change 1000 for your linux ID user number (in your
 	  bash just do *** $ id -u $USER *** to get your ID number)

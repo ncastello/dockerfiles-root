@@ -1,45 +1,43 @@
-# dockerfiles-damicm-G410.4
-Docker context to create docker Geant4 10.3 image to developments and background
-studies with Geant4 for DAMIC@MODENA
-# dockerfiles-damicm-G410.4
+# dockerfiles-root
+Docker context to create docker root image to run ROOT version 6.12
+# dockerfiles-root
 
-Docker __context__ to create docker Geant4 version 10.4 image to developments and background studies for 
-DAMIC@Modane (DAMIC-M experiment). This image is based on an ubuntu-16.04 and contains the necessary 
-packages to run DAMICMG4 (private repository git@gitlab.in2p3.fr:damicm/DAMICSNOLAB_G4sims).
+Docker __context__ to create docker [ROOT CERN](https://root.cern.ch/guides/users-guide "User's guide") version 6.12 image.
 
 ## Install
 
 #### installing prerequisites
-Assuming `docker` and `docker-compose` is installed on your system (host-computer).
+Assuming `docker` and `docker-compose` is installed on your system (host-computer). If not follow
+the links below:
 
-[how to install docker](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce-1) in linux
+	* [how to install docker](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce-1) for	 linux
 
-[how to install docker-compose](https://docs.docker.com/compose/install/#install-compose) in linux
+	* [how to install docker-compose](https://docs.docker.com/compose/install/#install-compose) for linux
 
-execute docker without requiring sudo: 
-```
-$ sudo usermode -a -G $USER
-```
+	* [post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) for linux
 
-#### 1. Clone the docker geant4.10.3 repository
 
-```bash
-$ git clone https://github.com/ncastello/dockerfiles-damicm-G410.4.git
-$ cd dockerfiles-damicm-G410.4
-```
+#### 1. Clone the docker root repository
 
-#### 2. To get the docker container you can either download the image from the dockerhub
-   ```bash
-   $ docker pull ncastello/damicm-geant4.10.4
-   ```
-   or alternatively build the docker image from the Dockerfile using docker-compose:
+	```bash
+	$ git clone https://github.com/ncastello/dockerfiles-damicm-G410.4.git
+	$ cd dockerfiles-damicm-G410.4
+	```
+#### 2. Change ID number and name user into the Dockerfile
 
-   ```bash
-   # Using docker
-   $ docker build github.com/ncastello/dockerfiles-damicm-G410.4
-   # Using docker-compose within the repo directory
-   $ docker-compose build damicm-geant4.10.4
-   ```
+	* search for FIXME in the Docker file and change 1000 for your linux ID user number (in your
+	  bash just do *** $ id -u $USER *** to get your ID number)
+
+	* searh for FIXME in the docker-compose.yml and change USER for your linux ID name (in your bash
+	  just do *** echo $USER ***)
+
+#### 3. To build the docker container
+   	```bash
+   	# Using docker
+   	$ docker build github.com/ncastello/dockerfiles-damicm-G410.4
+   	# Using docker-compose within the repo directory
+   	$ docker-compose build damicm-geant4.10.4
+   	```
 
 ## USAGE
 
@@ -48,49 +46,14 @@ The first to do is to give permissions to docker to access the X-server
 $ xhost +local:docker
 ```
 
-There are two ways to use this container:
+#### How to use
 
-#### 1. __As user__
-
-    The recommended way to run dockerfiles-damicm-G410.4 is with docker-compose
+    The recommended way to run dockerfiles-root container is with docker-compose. To start to use
+    ROOT you only need to run the following command in your bash
 
     ```bash
-    $ docker-compose run --rm <service_name>
+    $ docker-compose run --rm rootdocker
     ```
-
-    where <service_name> can be found in the docker-compose.yml file (i.e `damicdev` in the example below). This
-    will allow you to run this container under a __production environment__.
-    
-
-#### 2. __As developer__
-
-    However, if what you need is to develop GEBIC, i.e. to use this container in a
-    __development environment__ and consequently have a link to your host-computer,
-    you should then include the file __docker-compose.override.yml__ into this repository.
-    This file is as follows
-
-    ```file
-    version: "3.2"
-	services:
-        damicdev:
-            volumes:
-                - type: bind
-                 source: @global_path_to_some_local_folder
-                 target: /workingdir
-    ```
-    where @global_path_to_some_local_folder is __the path in the host-computer__ to be shared with the container, 
-    is the way to transfer information between your computer and the container. This means /workingdir (in the 
-    container) is linked to global_path_to_some_local_folder (in the host-computer).
-
-## Note
-
-Note that if you have both __docker-compose.override.yml__ and __docker-compose.yml__ files, to run the container with a
-__production environment__  you just run `docker-compose` as follows
-
-```bash
-$ docker-compose -f docker-compose.yml run --rm damicdev
-```
-By default, `docker-compose` use the override yml file.
 
 
 ## Usefull `docker` commands

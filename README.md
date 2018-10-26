@@ -10,18 +10,16 @@ Docker __context__ to create docker [ROOT CERN](https://root.cern.ch/guides/user
 Assuming `docker` and `docker-compose` is installed on your system (host-computer). If not follow
 the links below:
 
-	* [how to install docker](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce-1) for	 linux
-
-	* [how to install docker-compose](https://docs.docker.com/compose/install/#install-compose) for linux
-
-	* [post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) for linux
+1. [how to install docker](https://docs.docker.com/install/linux/docker-ce/debian/#install-docker-ce-1) for	 linux
+2. [how to install docker-compose](https://docs.docker.com/compose/install/#install-compose) for linux
+3. [post-installation steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) for linux
 
 
 #### 1. Clone the docker root repository
 
 	```bash
-	$ git clone https://github.com/ncastello/dockerfiles-damicm-G410.4.git
-	$ cd dockerfiles-damicm-G410.4
+	$ git clone https://github.com/ncastello/dockerfiles-root.git
+	$ cd dockerfiles-root
 	```
 #### 2. Change ID number and name user into the Dockerfile
 

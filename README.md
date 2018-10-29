@@ -31,10 +31,8 @@ the links below:
 
 #### 3. To build the docker container
    	```bash
-   	# Using docker
-   	$ docker build github.com/ncastello/dockerfiles-damicm-G410.4
    	# Using docker-compose within the repo directory
-   	$ docker-compose build damicm-geant4.10.4
+   	$ docker-compose build
    	```
 
 ## USAGE

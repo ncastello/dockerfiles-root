@@ -6,12 +6,12 @@ services:
         image: ncastello/ifcadamic-root612
 
     rootdocker:
-        image: ncastello/ifcadamic-root612    #ncastello should be your linux user name
+        image: ncastello/ifcadamic-root612    #FIXME: ncastello should be your linux user name
         environment:
             - DISPLAY=unix${DISPLAY}
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix
             - type: bind
-              source: /home/ncastello/workdir/DAMICM/simulations/G4104Run  # path_to_your_local_directory
+              source: /home/ncastello/repos/recon  # FIXME: path_to_your_local_directory
               target: /home/rootuser/workdir
 

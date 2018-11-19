@@ -42,12 +42,16 @@ RUN apt-get update && apt-get -y install \
         python-scipy \
         python-matplotlib \
         libboost-python-dev \
+        subversion \
+        subversion-tools \
         # here insert your libraries, packages that you think you will need
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/rootuser/workdir
 USER rootuser
+
+ENV setrootenv="/usr/local/bin/root/thisroot.sh"
 
 ENTRYPOINT ["/bin/bash"]
 
